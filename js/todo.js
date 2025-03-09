@@ -17,6 +17,7 @@ const paintToDo = (newToDo) => {
     const spanText = document.createElement("span")
     const deleteButton = document.createElement("button")
 
+    newToDoItem.className="todo-list-item"
     newToDoItem.id = newToDo.id
     deleteButton.className = "todo-delete-button"
     deleteButton.innerText = "❌"

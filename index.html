@@ -13,36 +13,41 @@
     <script defer src="js/weather.js"></script>
 </head>
 <body>
-    <form id="login-form">
+    <h2 class="clock" id="clock">00:00</h2>
+    <form class="login-form" id="login-form">
         <input 
+            class="custom-input"
             id="login-input"
             maxlength="15" 
             type="text" 
             placeholder="What is your name?" 
             required
         />
-        <input type="submit" value="Login">
+        <input class="custom-button" type="submit" value="Login">
     </form>
-    <h2 id="clock">00:00</h2>
-    <h1 class="hidden" id="greeting"></h1>
-    <button class="hidden" id="log-out">Logout</button>
+    <div class="logined-user-form">
+        <h1 class="greeting hidden" id="greeting"></h1>
+        <button class="custom-button hidden" id="log-out">Logout</button>
+    </div>
     <form class="todo-form" id="todo-form">
         <input 
             required 
+            class="custom-input"
             id="todo-text" 
             type="text" 
             placeholder="Write a To Do and Press Enter" 
         />
-        <input type="submit" />
+        <input class="custom-button" type="submit" />
     </form>
-    <ul id="todo-list">
-
+    <ul class="todo-list" id="todo-list">
     </ul>
     <div class="quotes">
-        <h2 id="quote-message"></h2>
-        <h3 id="quote-author"></h3>
+        <h2 class="quote-message" id="quote-message"></h2>
+        <h3 class="quote-author" id="quote-author"></h3>
     </div>
-    <p id="user-position"></p>
-    <p id="user-current-weather"></p>
+    <div class="position">
+        <p id="user-position"></p>
+        <p id="user-current-weather"></p>
+    </div>
 </body>
 </html>

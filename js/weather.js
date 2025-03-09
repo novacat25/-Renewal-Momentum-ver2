@@ -14,7 +14,7 @@ const allowGeolocation = (position) => {
         const currentTemp = data.main.temp
 
         userPosition.innerText = `${currentCountry}, ${currentWeather}` 
-        userCurrentWeather.innerText = `${currentTemp} / ${currentCountry}` 
+        userCurrentWeather.innerText = `${currentTemp}°C` 
 
     })
     .catch(console.error)
