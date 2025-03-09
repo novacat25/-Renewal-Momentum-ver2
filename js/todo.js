@@ -3,9 +3,12 @@ const toDoText = document.getElementById("todo-text")
 const todoList = document.getElementById("todo-list")
 
 const TODOS_KEY = "todo"
-const toDos = JSON.parse(localStorage.getItem(TODOS_KEY)) || []
+let toDos = []
 
 const deleteToDo = (event) => {
+    poppedToDos = toDos.filter((todo) => todo.id != event.target.parentNode.id)
+    toDos = poppedToDos
+    localStorage.setItem(TODOS_KEY, JSON.stringify(poppedToDos))
     event.target.parentNode.remove()
 }
 
@@ -14,6 +17,7 @@ const paintToDo = (newToDo) => {
     const spanText = document.createElement("span")
     const deleteButton = document.createElement("button")
 
+    newToDoItem.id = newToDo.id
     deleteButton.className = "todo-delete-button"
     deleteButton.innerText = "❌"
     deleteButton.addEventListener("click", deleteToDo)
@@ -21,12 +25,8 @@ const paintToDo = (newToDo) => {
     newToDoItem.appendChild(spanText)
     newToDoItem.appendChild(deleteButton)
 
-    spanText.innerText = newToDo
+    spanText.innerText = newToDo.task
     todoList.appendChild(newToDoItem)
-}
-
-const loadToDo = () => {
-    toDos.forEach(paintToDo)
 }
 
 const saveToDos = () => {
@@ -36,10 +36,17 @@ const saveToDos = () => {
 const handleSubmitToDo = (event) => {
     event.preventDefault()
     const newToDo = toDoText.value
-    paintToDo(newToDo)
-    toDos.push(newToDo)
+    const newToDoObject = {id: Date.now(), task: newToDo}
+    toDos.push(newToDoObject)
+    paintToDo(newToDoObject)
     toDoText.value = ""
     saveToDos()
+}
+
+const loadToDo = () => {
+    const updatedLocalStorage = JSON.parse(localStorage.getItem(TODOS_KEY))
+    if(updatedLocalStorage) toDos = updatedLocalStorage
+    toDos.forEach(paintToDo)
 }
 
 loadToDo()
