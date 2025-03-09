@@ -7,5 +7,8 @@
 }
 
 .todo-delete-button {
+    padding: 4px;
     margin-left: 8px;
+    border: none;
+    background: none;
 }
