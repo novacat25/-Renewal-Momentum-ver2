@@ -6,19 +6,26 @@ const logoutButton = document.getElementById("log-out")
 const HIDDEN_CLASS = "hidden"
 const LOCALSTORAGE_KEY = "user"
 
+const paintGreetings = (username) => {
+    greeting.innerText = `Hello ${username}!`
+    greeting.classList.remove(HIDDEN_CLASS)
+    logoutButton.classList.remove(HIDDEN_CLASS)
+}
+
+const showLoginDisplay = () => {
+    greeting.classList.add(HIDDEN_CLASS)
+    logoutButton.classList.add(HIDDEN_CLASS)
+    loginForm.classList.remove(HIDDEN_CLASS)
+}
+
 const updateLoginStatus = () => {
     const savedUserName = localStorage.getItem(LOCALSTORAGE_KEY)
 
     if(savedUserName) {
-        greeting.classList.remove(HIDDEN_CLASS)
-        logoutButton.classList.remove(HIDDEN_CLASS)
+        paintGreetings(savedUserName)
         loginForm.classList.add(HIDDEN_CLASS)
-        greeting.innerText = `Hello ${savedUserName}!`
-    } else {
-        greeting.classList.add(HIDDEN_CLASS)
-        logoutButton.classList.add(HIDDEN_CLASS)
-        loginForm.classList.remove(HIDDEN_CLASS)
-    }
+    } else
+        showLoginDisplay()
 }
 
 updateLoginStatus()
