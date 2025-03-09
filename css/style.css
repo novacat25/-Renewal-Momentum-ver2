@@ -93,10 +93,13 @@ body {
     border-radius: 16px;
     list-style: none;
     width: 50%;
-    margin-bottom: 4em;
     @media screen and (max-width: 480px) {
         width: 100%;
     }
+}
+
+ul.todo-list:not(:has(li)) {
+    display: none;
 }
 
 .todo-delete-button {
@@ -113,6 +116,7 @@ body {
 
 /* quotes */
 .quotes {
+    margin-top: 4em;
     display: flex;
     flex-direction: column;
     gap: 4px;
