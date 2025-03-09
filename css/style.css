@@ -5,3 +5,7 @@
 .todo-form {
     margin-top: 16px;
 }
+
+.todo-delete-button {
+    margin-left: 8px;
+}
